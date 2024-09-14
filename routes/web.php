@@ -4,11 +4,13 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 //Frontend
-Route::get('/',[FrontendController::class, 'welcome']);
+Route::get('/',[FrontendController::class, 'index'])->name('index');
+Route::get('/author/login/page', [FrontendController::class, 'author_login'])->name('author.login.page');
 
 require __DIR__.'/auth.php';
 
@@ -40,3 +42,10 @@ Route::get('/category/restore/{category_id}', [CategoryController::class, 'categ
 Route::get('/category/hard_delete/{category_id}', [CategoryController::class, 'category_hard_delete'])->name('category.hard.delete');
 Route::post('/category/check_delete', [CategoryController::class, 'category_check_delete'])->name('category.check.delete');
 Route::post('/category/check/restore', [CategoryController::class, 'category_check_restore'])->name('category.check.restore');
+
+
+//Tags
+Route::get('/tags', [TagController::class, 'tags'])->name('tags');
+Route::post('/tag/store', [TagController::class, 'tags_store'])->name('tags.store');
+Route::get('/tag/delete/{tag_id}', [TagController::class, 'tags_delete'])->name('tags.delete');
+

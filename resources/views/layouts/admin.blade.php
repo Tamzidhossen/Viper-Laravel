@@ -78,13 +78,7 @@
             <div class="collapse" id="advancedUI">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="../../pages/advanced-ui/cropper.html" class="nav-link">Cropper</a>
-                </li>
-                <li class="nav-item">
-                    <a href="../../pages/advanced-ui/owl-carousel.html" class="nav-link">Owl carousel</a>
-                  </li>
-                <li class="nav-item">
-                  <a href="../../pages/advanced-ui/sweet-alert.html" class="nav-link">Sweet Alert</a>
+                  <a href="{{ route('tags')  }}" class="nav-link">Add Tags</a>
                 </li>
               </ul>
             </div>
