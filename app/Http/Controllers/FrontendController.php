@@ -14,4 +14,12 @@ class FrontendController extends Controller
             'categories'=>$categories,
         ]);
     }
+
+    function author_login_page(){
+        return view('frontend.author.login');
+    }
+
+    function author_register_page(){
+        return view('frontend.author.signup');
+    }
 }

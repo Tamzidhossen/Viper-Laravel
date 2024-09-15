@@ -46,9 +46,15 @@
           </li>
           <li class="nav-item nav-category">web apps</li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('users') }}" role="button" aria-expanded="false" aria-controls="emails">
+            <a class="nav-link" href="{{ route('users') }}">
               <i class="link-icon" data-feather="mail"></i>
               <span class="link-title">Users</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('authors') }}">
+              <i class="link-icon" data-feather="mail"></i>
+              <span class="link-title">Author</span>
             </a>
           </li>
           <li class="nav-item nav-category">Components</li>

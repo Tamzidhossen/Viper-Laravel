@@ -87,7 +87,19 @@
                     </div>
                     <!--button-subscribe-->
                     <div class="botton-sub">
-                        <a href="signup.html" class="btn-subscribe">Sign in</a>
+                        @auth('author')
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ Auth::guard('author')->user()->name }}
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="{{ route('author.dashboard') }}">Admin Panel</a>
+                                    <a class="dropdown-item" href="{{ route('author.logout') }}">Logout</a>
+                                </div>
+                            </div>
+                        @else
+                            <a href="{{ route('author.login.page') }}" class="btn-subscribe">Sign in</a>
+                        @endauth
                     </div>
                     <!--navbar-toggler-->
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav"

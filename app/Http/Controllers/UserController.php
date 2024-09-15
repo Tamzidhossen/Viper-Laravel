@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PasswordRequest;
+use App\Models\Author;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -85,5 +86,32 @@ class UserController extends Controller
 
         User::find($user_id)->delete();
         return back()->with('del', 'User Deleted Successfully');
+    }
+
+    function authors(){
+        $authors = Author::all();
+        return view('admin.user.authors',[
+            'authors'=>$authors,
+        ]);
+    }
+
+    function authors_status($author_id){
+        $author = Author::find($author_id);
+        if($author->status == 0){
+            Author::find($author_id)->update([
+                'status'=>1,
+            ]);
+            return back();
+        }else{
+            Author::find($author_id)->update([
+                'status'=>0,
+            ]);
+            return back();
+        }
+    }
+
+    function authors_delete($author_id){
+        Author::find($author_id)->delete();
+        return back()->with('del','Author Deleted successfully');
     }
 }
