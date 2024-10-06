@@ -11,6 +11,12 @@
                     @if (session('msg'))
                         <div class="alert alert-danger">{{ session('msg') }}</div>
                     @endif
+                    @if (session('verified'))
+                        <div class="alert alert-success">{{ session('verified') }}</div>
+                    @endif
+                    @if (session('not_verify'))
+                        <div class="alert alert-warning">{{ session('not_verify') }} <strong><a href="{{ route('request.verify') }}">Verify Now</a></strong></div>
+                    @endif
                     <form  action="{{ route('author.login') }}" class="sign-form widget-form " method="POST">
                         @csrf
                         <div class="form-group">

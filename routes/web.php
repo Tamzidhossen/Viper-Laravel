@@ -4,7 +4,9 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -57,5 +59,36 @@ Route::post('/author/login/post', [AuthorController::class, 'author_login'])->na
 Route::get('/author/logout', [AuthorController::class, 'author_logout'])->name('author.logout');
 Route::get('/author/dashboard', [AuthorController::class, 'author_dashboard'])->middleware('author')->name('author.dashboard');
 Route::get('/authors', [UserController::class, 'authors'])->name('authors');
-Route::get('/authors/status{author_id}', [UserController::class, 'authors_status'])->name('authors.status');
-Route::get('/authors/delete{author_id}', [UserController::class, 'authors_delete'])->name('authors.delete');
+Route::get('/authors/status/{author_id}', [UserController::class, 'authors_status'])->name('authors.status');
+Route::get('/authors/delete/{author_id}', [UserController::class, 'authors_delete'])->name('authors.delete');
+Route::get('/authors/edit', [AuthorController::class, 'authors_edit'])->name('authors.edit');
+Route::post('/authors/profile/update', [AuthorController::class, 'author_profile_update'])->name('author.profile.update');
+Route::post('/authors/pass/update', [AuthorController::class, 'author_pass_update'])->name('author.pass.update');
+Route::get('/authors/verify/{token}', [AuthorController::class, 'author_verify'])->name('author.verify');
+Route::get('/request/verify', [AuthorController::class, 'request_verify'])->name('request.verify');
+Route::post('/request/verify/sent', [AuthorController::class, 'request_verify_sent'])->name('request.verify.sent');
+
+//Post
+Route::get('/add/post', [PostController::class, 'add_post'])->name('add.post');
+Route::post('/post/store', [PostController::class, 'post_store'])->name('post.store');
+Route::get('/my/post', [PostController::class, 'my_post'])->name('my.post');
+Route::get('/my/post/status/{post_id}', [PostController::class, 'my_post_status'])->name('my.post.status');
+Route::get('/my/post/delete/{post_id}', [PostController::class, 'my_post_delete'])->name('my.post.delete');
+Route::get('/post/details/{slug}', [FrontendController::class, 'post_details'])->name('post.details');
+Route::get('/author/post/{author_id}', [FrontendController::class, 'author_post'])->name('author.post');
+Route::get('/category/post/{category_id}', [FrontendController::class, 'category_post'])->name('category.post');
+
+//Search
+Route::get('/search', [FrontendController::class, 'search'])->name('search');
+Route::get('/tag/post/{tag_id}', [FrontendController::class, 'tag_post'])->name('tag.post');
+
+//Comments
+Route::post('/comment/store', [FrontendController::class, 'comment_store'])->name('comment.store');
+
+//Role
+Route::get('/role', [RoleController::class, 'role'])->name('role');
+Route::post('/permission/store', [RoleController::class, 'permission_store'])->name('permission.store');
+Route::post('/role/store', [RoleController::class, 'role_store'])->name('role.store');
+Route::post('/role/assign', [RoleController::class, 'role_assign'])->name('role.assign');
+Route::get('/role/delete/{role_id}', [RoleController::class, 'role_delete'])->name('role.delete');
+Route::get('/role/remove/{user_id}', [RoleController::class, 'role_remove'])->name('role.remove');

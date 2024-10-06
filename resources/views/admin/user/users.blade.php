@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 <div class="row">
+    @can('users')
     <div class="col-lg-8">
         <div class="card">
             <div class="card-header bg-primary">
@@ -17,7 +18,9 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Photo</th>
-                            <th>Action</th>
+                            @can('user_delete')
+                                <th>Action</th>
+                            @endcan
                         </tr>
                         @foreach ( $users as $index=>$user )
                         <tr>
@@ -26,14 +29,16 @@
                             <td>{{ $user->email }}</td>
                             <td>
                                 @if ($user->photo == null)
-                                    <img src="https://via.placeholder.com/30x30" alt="profile">
+                                    <img src="{{ asset('frontend_asset') }}/img/author/6.jpg" alt="profile">
                                 @else
                                 <img src="{{ asset('uploads/user') }}/{{ $user->photo }}" width="100" alt="">
                                 @endif
                             </td>
+                            @can('user_delete')
                             <td>
                                 <a href="{{ route('user.delete', $user->id) }}" class="btn btn-danger">Delete</a>
                             </td>
+                            @endcan
                         </tr>
                         @endforeach
                     </table>
@@ -41,6 +46,8 @@
             </div>
         </div>
     </div>
+    @endcan
+    @can('user_add')
     <div class="col-lg-4">
         <div class="card">
             <div class="card-header bg-primary">
@@ -71,5 +78,6 @@
             </div>
         </div>
     </div>
+    @endcan
 </div>
 @endsection

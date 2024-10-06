@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="row">
+    @can('authors')
     <div class="col-lg-10">
         <div class="card">
             <div class="card-header bg-primary">
@@ -29,7 +30,7 @@
                             @if ($author->photo==null)
                             <img src="https://via.placeholder.com/30x30" alt="profile">
                             @else
-                                dk
+                                <img src="{{ asset('uploads/author') }}/{{ $author->photo }}" alt="">
                             @endif
                         </td>
                         <td><strong>{{ $author->status==1?'Active':'Deactive' }}</strong></td>
@@ -43,5 +44,8 @@
             </div>
         </div>
     </div>
+    @else
+    <h3>You don't have access to this page</h3>
+    @endcan
 </div>
 @endsection

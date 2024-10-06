@@ -9,8 +9,11 @@
                 <div class="login-content">
                     <h4>Sign up</h4>
                     <!--form-->
-                    @if (session('author_reg'))
+                    {{-- @if (session('author_reg'))
                         <div class="alert alert-success">{{ session('author_reg') }}</div>
+                    @endif         --}}
+                    @if (session('verify'))
+                        <div class="alert alert-success">{{ session('verify') }}</div>
                     @endif        
                     <form action="{{ route('author.register') }}"  class="sign-form widget-form" method="POST">
                         @csrf

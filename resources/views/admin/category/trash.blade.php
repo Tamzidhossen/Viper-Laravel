@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+@can('trash_category')
 <div class="row">
     <div class="col-lg-8">
         <div class="card">
@@ -64,6 +65,7 @@
         </div>
     </div>
 </div>
+@endcan
 @endsection
 
 @section('script')

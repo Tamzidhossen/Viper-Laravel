@@ -23,6 +23,25 @@
     <!-- main style -->
     <link rel="stylesheet" href="{{ asset('frontend_asset') }}/css/style.css">
     <link rel="stylesheet" href="{{ asset('frontend_asset') }}/css/custom.css">
+    <style>
+        .social-media ul li {
+            margin-right: 10px;
+        }
+        .social-media ul li a span {
+            width: 30px;
+            height: 30;
+            line-height: 30px;
+            text-align: center;
+            color: white;
+            border-radius: 50%;
+        }
+        .social-media ul li a .fa-facebook-square{
+            background: #3b5998;
+        }
+        .social-media ul li a .fa-linkedin{
+            background: #3b5998;
+        }
+    </style>
 </head>
 
 <body>
@@ -37,7 +56,7 @@
             <div class="header-area ">
                 <!--logo-->
                 <div class="logo">
-                    <a href="index.html">
+                    <a href="#">
                         <img src="{{ asset('frontend_asset') }}/img/logo/logo-dark.png" alt="" class="logo-dark">
                         <img src="{{ asset('frontend_asset') }}/img/logo/logo-white.png" alt="" class="logo-white">
                     </a>
@@ -48,7 +67,7 @@
                         <div class="collapse navbar-collapse" id="main_nav">
                             <ul class="navbar-nav ">
                                 <li class="nav-item ">
-                                    <a class="nav-link active" href="index.html"> Home </a>
+                                    <a class="nav-link active" href="/"> Home </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="blog.html"> Blogs </a>
@@ -199,10 +218,10 @@
                         <button type="button" class="close">
                             <i class="far fa-times"></i>
                         </button>
-                        <form class="search-form" action="https://oredoo.assiagroupe.net/Oredoo/search.html">
-                            <input type="search" value="" placeholder="What are you looking for?">
+                        <div class="search-form">
+                            <input type="search" id="search_input" placeholder="What are you looking for?">
                             <button type="submit" class="search-btn"> search</button>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -223,11 +242,19 @@
     <script src="{{ asset('frontend_asset') }}/js/owl.carousel.min.js"></script>
     <script src="{{ asset('frontend_asset') }}/js/switch.js"></script>
     <script src="{{ asset('frontend_asset') }}/js/jquery.marquee.js"></script>
+    <script src="{{ asset('js/share.js') }}"></script>
 
 
     <!-- JS main  -->
     <script src="{{ asset('frontend_asset') }}/js/main.js"></script>
-
+    <script>
+        $('.search-btn').click(function(){
+            let search_keyword = $('#search_input').val();
+            let link = "{{ route('search') }}"+"?q="+search_keyword;
+            window.location.href = link;
+        });
+    </script>
+    @yield('footer_script');
 
 </body>
 </html>
