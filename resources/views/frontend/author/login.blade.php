@@ -8,6 +8,9 @@
                 <div class="login-content">
                     <h4>Login</h4>
                     <p></p>
+                    @if (session('reset'))
+                        <div class="alert alert-success">{{ session('reset') }}</div>
+                    @endif
                     @if (session('msg'))
                         <div class="alert alert-danger">{{ session('msg') }}</div>
                     @endif

@@ -97,3 +97,5 @@ Route::get('/role/remove/{user_id}', [RoleController::class, 'role_remove'])->na
 //Password Reset
 Route::get('pass/reset', [PassResetController::class, 'pass_reset'])->name('pass.reset');
 Route::post('pass/reset/send', [PassResetController::class, 'pass_reset_sent'])->name('pass.reset.sent');
+Route::get('pass/reset/form/{token}', [PassResetController::class, 'pass_reset_form'])->name('pass.reset.form');
+Route::post('pass/reset/update/{token}', [PassResetController::class, 'pass_reset_update'])->name('pass.reset.update');
