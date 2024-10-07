@@ -32,7 +32,7 @@
                             @endif
                         </div>
                         <div class="sign-controls form-group">
-                            <a href="#" class="btn-link ">Forgot Password?</a>
+                            <a href="{{ route('pass.reset') }}" class="btn-link ">Forgot Password?</a>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn-custom">Login in</button>

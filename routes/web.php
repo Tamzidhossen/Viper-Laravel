@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PassResetController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -92,3 +93,7 @@ Route::post('/role/store', [RoleController::class, 'role_store'])->name('role.st
 Route::post('/role/assign', [RoleController::class, 'role_assign'])->name('role.assign');
 Route::get('/role/delete/{role_id}', [RoleController::class, 'role_delete'])->name('role.delete');
 Route::get('/role/remove/{user_id}', [RoleController::class, 'role_remove'])->name('role.remove');
+
+//Password Reset
+Route::get('pass/reset', [PassResetController::class, 'pass_reset'])->name('pass.reset');
+Route::post('pass/reset/send', [PassResetController::class, 'pass_reset_sent'])->name('pass.reset.sent');
