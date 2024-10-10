@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PassResetController;
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[FrontendController::class, 'index'])->name('index');
 Route::get('/author/login/page', [FrontendController::class, 'author_login_page'])->name('author.login.page');
 Route::get('/author/Register/page', [FrontendController::class, 'author_register_page'])->name('author.register.page');
+Route::get('/author/list', [FrontendController::class, 'author_list'])->name('author.list');
 Route::post('/subscribe', [FrontendController::class, 'subscribe'])->name('subscribe');
 
 require __DIR__.'/auth.php';
@@ -100,3 +102,6 @@ Route::get('pass/reset', [PassResetController::class, 'pass_reset'])->name('pass
 Route::post('pass/reset/send', [PassResetController::class, 'pass_reset_sent'])->name('pass.reset.sent');
 Route::get('pass/reset/form/{token}', [PassResetController::class, 'pass_reset_form'])->name('pass.reset.form');
 Route::post('pass/reset/update/{token}', [PassResetController::class, 'pass_reset_update'])->name('pass.reset.update');
+
+//FAQ
+Route::resource('faq', FaqController::class);

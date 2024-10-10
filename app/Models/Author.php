@@ -14,4 +14,7 @@ class Author extends Authenticatable
     protected $guard = 'author';
 
     protected $guarded = ['id'];
+    function rel_to_post(){
+        return $this->hasMany(post::class, 'author_id');
+    }
 }

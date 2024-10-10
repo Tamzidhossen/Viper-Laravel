@@ -137,4 +137,11 @@ class FrontendController extends Controller
         ]);
         return back();
     }
+
+    function author_list(){
+        $authors = Author::where('status', 1)->get();
+        return view('frontend.author_list', [
+            'authors'=>$authors,
+        ]);
+    }
 }

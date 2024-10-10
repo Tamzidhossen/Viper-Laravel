@@ -8,7 +8,7 @@
             <div class="col-lg-12 col-md-12 ">
                     <div class="authors-info">
                     <div class="image">
-                        <a href="author.html" class="image">
+                        <a href="{{ route('author.post', $author->id) }}" class="image">
                             @if ($author->photo != null)
                                 <img src="{{ asset('uploads/author') }}/{{ $author->photo }}" alt="">
                             @else
