@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[FrontendController::class, 'index'])->name('index');
 Route::get('/author/login/page', [FrontendController::class, 'author_login_page'])->name('author.login.page');
 Route::get('/author/Register/page', [FrontendController::class, 'author_register_page'])->name('author.register.page');
+Route::post('/subscribe', [FrontendController::class, 'subscribe'])->name('subscribe');
 
 require __DIR__.'/auth.php';
 

@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Popular;
 use App\Models\post;
+use App\Models\subscribe;
 use App\Models\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -14,6 +15,15 @@ use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {
+    function subscribe(Request $request){
+        subscribe::insert([
+            'author_id'=>Auth::guard('author')->id(),
+            'email'=>$request->email,
+            'created_at'=>Carbon::now(),
+        ]);
+        return back();
+    }
+
     function index(){
         $tags=Tag::all();
         $categories = Category::all();
