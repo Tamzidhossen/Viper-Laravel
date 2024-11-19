@@ -74,8 +74,9 @@ class CategoryController extends Controller
                 'category_image'=>$file_name,
             ]);
 
-            return redirect()->route('category')->with('cat_update', 'Category Updated Successfully');
+            // return redirect()->route('category')->with('cat_update', 'Category Updated Successfully');
         }
+        return redirect()->route('category')->with('cat_update', 'Category Updated Successfully');
     }
 
     function category_delete($category_id){

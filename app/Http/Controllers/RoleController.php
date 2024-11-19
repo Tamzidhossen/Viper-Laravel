@@ -17,7 +17,6 @@ class RoleController extends Controller
         return view('admin.role.role', [
             'permissions'=>$permissions,
             'roles'=>$roles,
-            'roles'=>$roles,
             'users'=>$users,
         ]);
     }
